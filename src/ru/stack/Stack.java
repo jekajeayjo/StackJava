@@ -10,26 +10,20 @@ import java.util.ArrayList;
 /**
  *
  * @author kob
+ * @version  1.1
+ * @since  1.0
+ * This is class Stack which add input values in array of Gneric Type
  */
-/*
-The class create new array of type Generic and the class have five methods(push,pick,isEmpty,search,pop) and one own constructor
--method "push" adds a new element in array if array is 
-full then Exception to show that and if user wants to add 
-element of type Exception returns that the element has other type
--method "isEmpty"  checks array has element or no and return boolean answer
--method "pop"  check array has elements or no and later return previous element
--method "pick" check array has elements  and later delete last element of array
-and return array without last element
--method "search" check input element if element has other type then return exception
-if element is same element then return desired element or elements and countyti desired 
-element in array 
-*/ 
+
 
 public class Stack<T> {
    
     private Object [] array;
       private int numberOfElements;
-   
+   /**
+    * This constructor create array of Generic type
+    * @param size the field which will be  to create a array of  certain size
+    */
    Stack (int size)
    {    
      
@@ -40,7 +34,11 @@ public class Stack<T> {
   
    
    }
-
+/**
+ * <p><strong>The method adds element in array</strong></p> 
+ * @param element it is element which is added in array 
+ * @throws RuntimeException if element will be other type then return error or if array will be full  then return error that array is full
+ */
   public void push (T element)
   {
     try
@@ -62,7 +60,10 @@ public class Stack<T> {
     System.out.println("Error!/n Other type");
     }
   }
-
+ /**
+  *  <strong>IsEMpty</strong> - <p> the method which  checks array full array or not
+  * @return empty in boolean type
+  */
   public boolean isEmpty ()
     {
         boolean empty =true;
@@ -78,7 +79,10 @@ public class Stack<T> {
 
     return empty;
     }
-  
+  /**
+   * the method shows previously alement of array 
+   * @return numberOfElements of array
+   */
    public T pop()
     {
        
@@ -98,7 +102,10 @@ public class Stack<T> {
       
     }
 
-   
+   /**
+    * The Method delete <i>last</i> (upper) element  and show all element whithout <i>last</i>
+    * @return array[numberOfElements] 
+    */
     public T pick()
     { 
         
@@ -118,14 +125,20 @@ public class Stack<T> {
     
         }
     }
-   
+   /**
+    *  The method is looking for an element in array
+    * @param element is input values for search
+    * @return count of found elements of array
+    * @throws  RuntimeException if element will be other type then show error 
+    */
      public int search(T element)
     {
        
     int count=0;
  
    
-  
+  try 
+  {
     for (int i=0;i<array.length;i++)
     {
     
@@ -136,6 +149,12 @@ public class Stack<T> {
        System.out.println("locate of desired element "+(i+1));
    }
    
+    }
+  }
+  
+     catch (ArrayStoreException e)
+    {
+    System.out.println("Error!/n Other type");
     }
 
     if (count ==0)
