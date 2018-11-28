@@ -21,12 +21,16 @@ public class java {
         {
             
         Stack  <Integer> k =new Stack(5);
-        synchronized(k){
+             Stack  <String> ks =new Stack(3);
+           synchronized(k){
        System.out.println( k.isEmpty());
         k.push(5);
    k.search(5);
              }
-  
+           synchronized(ks){
+                ks.push("asd");
+   ks.search("asd");
+           }
    
         }
         catch(Exception e)
