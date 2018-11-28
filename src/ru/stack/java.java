@@ -16,17 +16,18 @@ public class java {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       
         try
         {
+            
         Stack  <Integer> k =new Stack(5);
+        synchronized(k){
        System.out.println( k.isEmpty());
-       k.push(5);
+        k.push(5);
    k.search(5);
-   myThread n=new myThread(5);
-   Thread th=new Thread (n);
-   //th.start();
-   n.push(5);
-   n.search(5);
+             }
+  
+   
         }
         catch(Exception e)
         {

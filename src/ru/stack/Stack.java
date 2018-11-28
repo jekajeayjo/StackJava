@@ -39,7 +39,7 @@ public class Stack<T> {
  * @param element it is element which is added in array 
  * @throws RuntimeException if element will be other type then return error or if array will be full  then return error that array is full
  */
-  public void push (T element)
+  public synchronized void push (T element)
   {
     try
     {
@@ -64,7 +64,7 @@ public class Stack<T> {
   *  <strong>IsEMpty</strong> - <p> the method which  checks array full array or not
   * @return empty in boolean type
   */
-  public boolean isEmpty ()
+  public synchronized boolean isEmpty ()
     {
         boolean empty =true;
       for (int i=0;i<array.length;i++)
@@ -83,7 +83,7 @@ public class Stack<T> {
    * the method shows previously alement of array 
    * @return numberOfElements of array
    */
-   public T pop()
+   public synchronized T pop()
     {
        
     if (isEmpty())
@@ -106,7 +106,7 @@ public class Stack<T> {
     * The Method delete <i>last</i> (upper) element  and show all element whithout <i>last</i>
     * @return array[numberOfElements] 
     */
-    public T pick()
+    public synchronized T pick()
     { 
         
         if (isEmpty()){
@@ -131,7 +131,7 @@ public class Stack<T> {
     * @return count of found elements of array
     * @throws  RuntimeException if element will be other type then show error 
     */
-     public int search(T element)
+     public synchronized int search(T element)
     {
        
     int count=0;
