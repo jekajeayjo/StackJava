@@ -6,6 +6,9 @@
 package ru.stack;
 
 import java.util.ArrayList;
+import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
@@ -16,14 +19,15 @@ import java.util.ArrayList;
  */
 
 
-public class Stack<T> {
-   
+public  class Stack<T> {
+ Lock lock= new ReentrantLock();
     private Object [] array;
       private int numberOfElements;
    /**
     * This constructor create array of Generic type
     * @param size the field which will be  to create a array of  certain size
     */
+      
    Stack (int size)
    {    
      
@@ -41,6 +45,7 @@ public class Stack<T> {
  */
   public synchronized void push (T element)
   {
+      lock.lock();
     try
     {
   int i=++numberOfElements;
@@ -156,7 +161,7 @@ public class Stack<T> {
     {
     System.out.println("Error!/n Other type");
     }
-
+ lock.unlock();
     if (count ==0)
     {      
         System.out.println("not found");
@@ -168,6 +173,7 @@ public class Stack<T> {
       System.out.println("count found element "+count);
       return count;
     }
+    
     }
  
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ru.stack;
+import java.util.concurrent.*;
 
 /**
  *
@@ -16,20 +17,19 @@ public class java {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-       
+       Semaphore sem=new Semaphore(1);
+       Stack  <Integer> k =new Stack(5);
+             Stack  <String> ks =new Stack(3);
         try
         {
-            
-        Stack  <Integer> k =new Stack(5);
-             Stack  <String> ks =new Stack(3);
-           synchronized(k){
-       System.out.println( k.isEmpty());
-        k.push(5);
-   k.search(5);
+       synchronized(k){
+         System.out.println( k.isEmpty());
+          k.push(5);
+           k.search(5);
              }
-           synchronized(ks){
+      synchronized(ks){
                 ks.push("asd");
-   ks.search("asd");
+                ks.search("asd");
            }
    
         }
