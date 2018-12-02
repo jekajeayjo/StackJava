@@ -64,7 +64,10 @@ public  class Stack<T> {
     {
     System.out.println("Error!/n Other type");
     }
+    finally 
+    {
      lock.unlock();
+    }
   }
  /**
   *  <strong>IsEMpty</strong> - <p> the method which  checks array full array or not
@@ -90,23 +93,28 @@ public  class Stack<T> {
    * @return numberOfElements of array
    */
    public synchronized T pop()
-    {
-        lock.lock();
+    { 
+        lock.tryLock();
+        try
+        {
+       
+        {
     if (isEmpty())
     {
         
     System.out.println("стэк пустой");
-     lock.unlock();
     return null;
     }
-    
     else 
-    {
-        
-             System.out.println("numberOfElements is "+numberOfElements); lock.unlock();
+    {   
+    System.out.println("numberOfElements is "+numberOfElements);        
     return   (T) array[numberOfElements--];
     }
-      
+        }}
+        finally
+        {
+            lock.unlock();
+                }
     }
 
    /**
@@ -115,7 +123,9 @@ public  class Stack<T> {
     */
     public synchronized T pick()
     { 
-        
+        lock.tryLock();
+        try 
+        {
         if (isEmpty()){
              
             System.out.println("стэк пустой ");
@@ -130,6 +140,11 @@ public  class Stack<T> {
                 
     return       (T)  array[numberOfElements];
     
+        }
+        }
+        finally 
+        {
+            lock.unlock();
         }
     }
    /**
